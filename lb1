@@ -11,8 +11,8 @@ def talker():
     msg = Float64MultiArray()
 
     # 速度设置
-    linear_velocity = 0.1  # 直线行驶速度
-    angular_velocity = 0.1  # 转弯速度
+    linear_speed = 0.1  # 直线行驶速度
+    angular_speed = 0.1  # 转弯速度
     side_length = 0.5  # 正六边形边长，单位：米
     side_time = side_length / linear_velocity  # 每边行驶时间
     turn_time = 60.0 / angular_velocity  # 转弯所需时间（60度）
@@ -22,7 +22,7 @@ def talker():
         start_time = time.time()
         while time.time() - start_time < side_time:
             # 所有轮子以相同速度旋转以实现直线行驶
-            msg.data = [linear_velocity, linear_velocity, linear_velocity, linear_velocity]
+            msg.data = [linear_speed, linear_speed, linear_speed, linear_speed]
             rospy.loginfo(msg)
             pub.publish(msg)
             rate.sleep()
@@ -31,7 +31,7 @@ def talker():
         start_time = time.time()
         while time.time() - start_time < turn_time:
             # 为了转弯，一侧的轮子以不同于另一侧的速度旋转
-            msg.data = [-angular_velocity, angular_velocity, -angular_velocity, angular_velocity]
+            msg.data = [-angular_speed, angular_speed, -angular_speed, angular_speed]
             rospy.loginfo(msg)
             pub.publish(msg)
             rate.sleep()
