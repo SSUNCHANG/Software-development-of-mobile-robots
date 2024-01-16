@@ -58,7 +58,7 @@ def talker():
     for _ in range (7):
         start_time = time.time()
         while time.time() - start_time < side_time:
-           msg.data = [lspeed,-lspeed,lspeed,-lspeed]
+           msg.data = [speed1,-speed2,speed3,-speed4]
 
         rospy.loginfo(msg)
         pub.publish(msg)
@@ -66,7 +66,7 @@ def talker():
 
         start_time = time.time()
         while time.time() - start_time < turn_time:
-           msg.data = [-aspeed,aspeed,-aspeed,aspeed]
+           msg.data = [speed1,speed2,speed3,speed4]
         
         rospy.loginfo(msg)
         pub.publish(msg)
